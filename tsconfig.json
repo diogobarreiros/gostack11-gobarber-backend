@@ -4,6 +4,7 @@
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
+    "isolatedModules": false,
     "strict": true,
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
@@ -17,5 +18,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["./*.js"]
 }
