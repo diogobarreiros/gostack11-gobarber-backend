@@ -1,5 +1,5 @@
-import { injectable, inject } from 'tsyringe';
-import { addHours, isAfter } from 'date-fns';
+import { inject, injectable } from 'tsyringe';
+import { isAfter, addHours } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
@@ -8,7 +8,7 @@ import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 // import User from '../infra/typeorm/entities/User';
 
-interface IDataRequest {
+interface IRequest {
   token: string;
   password: string;
 }
@@ -19,20 +19,19 @@ class ResetPasswordService {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
-    @inject('UserTokenRepository')
+    @inject('UserTokensRepository')
     private userTokensRepository: IUserTokensRepository,
 
     @inject('HashProvider')
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute({ token, password }: IDataRequest): Promise<void> {
+  public async execute({ token, password }: IRequest): Promise<void> {
     const userToken = await this.userTokensRepository.findByToken(token);
 
     if (!userToken) {
-      throw new AppError('Token not found');
+      throw new AppError('User token does not exists');
     }
-
     const user = await this.usersRepository.findById(userToken.user_id);
 
     if (!user) {
