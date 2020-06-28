@@ -4,6 +4,8 @@ node_modules/
 build/
 temp/
 .env
+ormconfig.json
+dist/
 coverage/
 
 tmp/*
