@@ -20,7 +20,7 @@
     "@types/mongodb": "^3.5.17",
     "@types/nodemailer": "^6.4.0",
     "@types/redis": "^2.8.21",
-    "aws-sdk": "^2.678.0",
+    "aws-sdk": "^2.814.0",
     "bcryptjs": "^2.4.3",
     "celebrate": "^12.1.1",
     "class-transformer": "^0.2.3",
